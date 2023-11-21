@@ -9,8 +9,8 @@ player.on('timeupdate',  throttle( (e) => {
 );
 const videoStopLocalStorage = localStorage.getItem('videoplayer-current-time');
 
-if(videoStopLocalStorage==!undefined){
-player.setCurrentTime(videoStopLocalStorage).catch((error) => {
-    console.error(error);
-});
+if(videoStopLocalStorage === undefined || videoStopLocalStorage === null){
+    localStorage.setItem('videoplayer-current-time', 0);
+} else {
+    player.setCurrentTime(videoStopLocalStorage);
 };
