@@ -1,4 +1,4 @@
-import { throttle } from 'lodash.throttle';
+import throttle from '/node_modules/lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
 const email = document.querySelector('input[name="email"]');
@@ -7,7 +7,7 @@ const LOCALSTORAGE_KEY = 'feedback-form-state';
 
 form.addEventListener(
   'input',
-  throttle(e => {
+  throttle((e) => {
     const objectToSave = { email: email.value, message: message.value };
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(objectToSave));
   }, 500)
